@@ -1,6 +1,11 @@
 // Testing practice test suite
 
-import { capitalize, reverseString, calculator } from "./index.js";
+import {
+  capitalize,
+  reverseString,
+  calculator,
+  caesarCipher,
+} from "./index.js";
 
 describe("capitalize function", () => {
   test("returns first character of string capitalized", () => {
@@ -101,5 +106,39 @@ describe("calculator methods", () => {
 
   test("divide by 0", () => {
     expect(calculator.divide(5, 0)).toBe("Please do not divide by 0");
+  });
+});
+
+describe("caesar cipher function", () => {
+  test("shift simple string", () => {
+    expect(caesarCipher("hello", 3)).toBe("khoor");
+  });
+
+  test("non-string param", () => {
+    expect(caesarCipher(5, 3)).toBe(
+      "Please only include letters and a valid shift.",
+    );
+  });
+
+  test("empty string", () => {
+    expect(caesarCipher("", 3)).toBe(
+      "Please only include letters and a valid shift.",
+    );
+  });
+
+  test("non-number shift", () => {
+    expect(caesarCipher("abc", "d")).toBe(
+      "Please only include letters and a valid shift.",
+    );
+  });
+
+  test("falsy shift", () => {
+    expect(caesarCipher("abc", null)).toBe(
+      "Please only include letters and a valid shift.",
+    );
+  });
+
+  test("wrap alphabet", () => {
+    expect(caesarCipher("pizza", 2)).toBe("rkbbc");
   });
 });

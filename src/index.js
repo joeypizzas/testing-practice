@@ -38,3 +38,24 @@ export const calculator = {
     return a / b;
   },
 };
+
+export function caesarCipher(str, shift) {
+  if (typeof str != "string" || !str || typeof shift != "number" || !shift)
+    return "Please only include letters and a valid shift.";
+
+  const alphabet = [..."abcdefghijklmnopqrstuvwxyz"];
+  const arrayOfStr = str.split("");
+  const shiftedArr = [];
+
+  for (const char of arrayOfStr) {
+    let shiftedIndex;
+    if (alphabet.indexOf(char) + shift > 25) {
+      shiftedIndex = alphabet.indexOf(char) + shift - 26;
+    } else {
+      shiftedIndex = alphabet.indexOf(char) + shift;
+    }
+    shiftedArr.push(alphabet[shiftedIndex]);
+  }
+
+  return shiftedArr.join("");
+}
