@@ -1,3 +1,3 @@
-// Template index.js file
+// Testing practice index
 
 import "./style.css";
