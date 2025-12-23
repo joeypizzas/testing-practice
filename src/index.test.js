@@ -1,6 +1,6 @@
 // Testing practice test suite
 
-import { capitalize, reverseString } from "./index.js";
+import { capitalize, reverseString, calculator } from "./index.js";
 
 describe("capitalize function", () => {
   test("returns first character of string capitalized", () => {
@@ -47,5 +47,59 @@ describe("reverse string function", () => {
 
   test("string with a space", () => {
     expect(reverseString("pizza pizza")).toBe("azzip azzip");
+  });
+});
+
+describe("calculator methods", () => {
+  test("adds two numbers", () => {
+    expect(calculator.add(1, 2)).toBe(3);
+  });
+
+  test("add two string numbers", () => {
+    expect(calculator.add("1", "2")).toBe("Please add two numbers.");
+  });
+
+  test("one or more addition param is not a number", () => {
+    expect(calculator.add(null, 2)).toBe("Please add two numbers.");
+  });
+
+  test("subtract two numbers", () => {
+    expect(calculator.subtract(3, 2)).toBe(1);
+  });
+
+  test("subtract two string numbers", () => {
+    expect(calculator.subtract("3", "2")).toBe("Please subtract two numbers.");
+  });
+
+  test("one or more subtraction param is not a number", () => {
+    expect(calculator.subtract(null, 2)).toBe("Please subtract two numbers.");
+  });
+
+  test("multiply two numbers", () => {
+    expect(calculator.multiply(3, 2)).toBe(6);
+  });
+
+  test("mutiply two string numbers", () => {
+    expect(calculator.multiply("3", "2")).toBe("Please multiply two numbers.");
+  });
+
+  test("one or more multiplication param is not a number", () => {
+    expect(calculator.multiply(null, 2)).toBe("Please multiply two numbers.");
+  });
+
+  test("divide two numbers", () => {
+    expect(calculator.divide(4, 2)).toBe(2);
+  });
+
+  test("divide two string numbers", () => {
+    expect(calculator.divide("4", "2")).toBe("Please divide two numbers.");
+  });
+
+  test("one or more division param is not a number", () => {
+    expect(calculator.divide(null, 2)).toBe("Please divide two numbers.");
+  });
+
+  test("divide by 0", () => {
+    expect(calculator.divide(5, 0)).toBe("Please do not divide by 0");
   });
 });
