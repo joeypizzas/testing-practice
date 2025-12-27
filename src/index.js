@@ -48,13 +48,21 @@ export function caesarCipher(str, shift) {
   const shiftedArr = [];
 
   for (const char of arrayOfStr) {
-    let shiftedIndex;
-    if (alphabet.indexOf(char) + shift > 25) {
-      shiftedIndex = alphabet.indexOf(char) + shift - 26;
+    if (alphabet.includes(char.toLowerCase())) {
+      let shiftedIndex;
+      if (alphabet.indexOf(char.toLowerCase()) + shift > 25) {
+        shiftedIndex = alphabet.indexOf(char.toLowerCase()) + shift - 26;
+      } else {
+        shiftedIndex = alphabet.indexOf(char.toLowerCase()) + shift;
+      }
+      if (char === char.toUpperCase()) {
+        shiftedArr.push(alphabet[shiftedIndex].toUpperCase());
+      } else {
+        shiftedArr.push(alphabet[shiftedIndex]);
+      }
     } else {
-      shiftedIndex = alphabet.indexOf(char) + shift;
+      shiftedArr.push(char);
     }
-    shiftedArr.push(alphabet[shiftedIndex]);
   }
 
   return shiftedArr.join("");

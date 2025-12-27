@@ -141,4 +141,12 @@ describe("caesar cipher function", () => {
   test("wrap alphabet", () => {
     expect(caesarCipher("pizza", 2)).toBe("rkbbc");
   });
+
+  test("case preservation", () => {
+    expect(caesarCipher("heLLo", 3)).toBe("khOOr");
+  });
+
+  test("punctuation and spacing", () => {
+    expect(caesarCipher("Hello, World!", 3)).toBe("Khoor, Zruog!");
+  });
 });
