@@ -67,3 +67,20 @@ export function caesarCipher(str, shift) {
 
   return shiftedArr.join("");
 }
+
+export function analyzeArray(arr) {
+  if (!Array.isArray(arr) || arr.length === 0)
+    return "Please pass an array with only numbers.";
+
+  for (const num of arr) {
+    if (typeof num != "number")
+      return "Please pass an array with only numbers.";
+  }
+
+  return {
+    average: arr.reduce((sum, num) => sum + num, 0) / arr.length,
+    min: Math.min(...arr),
+    max: Math.max(...arr),
+    length: arr.length,
+  };
+}

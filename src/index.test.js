@@ -5,6 +5,7 @@ import {
   reverseString,
   calculator,
   caesarCipher,
+  analyzeArray,
 } from "./index.js";
 
 describe("capitalize function", () => {
@@ -148,5 +149,39 @@ describe("caesar cipher function", () => {
 
   test("punctuation and spacing", () => {
     expect(caesarCipher("Hello, World!", 3)).toBe("Khoor, Zruog!");
+  });
+});
+
+describe("Analyze array function", () => {
+  test("Array has non-number", () => {
+    expect(analyzeArray([1, 2, "hello!", 4, 5])).toBe(
+      "Please pass an array with only numbers.",
+    );
+  });
+
+  test("No array", () => {
+    expect(analyzeArray(null)).toBe("Please pass an array with only numbers.");
+  });
+
+  test("Empty array", () => {
+    expect(analyzeArray([])).toBe("Please pass an array with only numbers.");
+  });
+
+  test("Return analyzed array object", () => {
+    expect(analyzeArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).toStrictEqual({
+      average: 5.5,
+      min: 1,
+      max: 10,
+      length: 10,
+    });
+  });
+
+  test("Negative numbers", () => {
+    expect(analyzeArray([-10, -5, 0, 5, 10])).toStrictEqual({
+      average: 0,
+      min: -10,
+      max: 10,
+      length: 5,
+    });
   });
 });
